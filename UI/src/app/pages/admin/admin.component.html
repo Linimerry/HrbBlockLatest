@@ -1,0 +1,159 @@
+   <div class="row container col-md-12 col-sm-12 col-lg-12">
+        <h3>List of Users And Tools</h3>
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab"  href="#home" #ListToolTab>List of Tools</a></li>
+            <li ><a data-toggle="tab" href="#menu1" #AddToolTab>List of Users</a></li>
+          
+          </ul>
+          <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+             
+                        <div class="row">
+                          <div class="col-md-12">   
+                              <card >   
+                      <table class="table table-bordered table-hover">
+                        <thead>
+                          <tr>                                             
+                            <th>Tool Name</th>
+                            <th>Tool Description</th>
+                            <th>Contact To</th>
+                            <th>Link</th>
+                            <th>Status</th>
+                            <th></th>
+                               
+                          </tr>
+                        </thead> 
+                        <tbody>
+                      
+                            <tr *ngFor="let item of downloadDetails| paginate: { id: 'pager', itemsPerPage: pageSize, currentPage: pageNumber}; let i = index">
+                            <td>{{item.ToolName}}</td>                
+                            <td>{{item.ToolDescription}}</td>
+                            <td>{{item.ContactTo}}</td>
+                            <td>{{item.link}}</td> 
+                            <td><ng-template [ngIf]="item.IsApproved == 1">Approved</ng-template>
+                              <ng-template [ngIf]="item.IsApproved == 2">Disapproved</ng-template>
+                              <ng-template [ngIf]="item.IsApproved ==0">Inprogress</ng-template>
+                             </td>     
+                            <td>
+                                <ng-template [ngIf]="item.IsApproved == 0">
+                                    <button (click)="Approve(item.Id)">Approve</button><button (click)="Disapprove(item.Id)" >Disapprove</button>
+                                </ng-template>
+                              
+                            </td>                                
+                          </tr>
+                        </tbody>          
+                      </table>  
+                      
+                      <form class="pagination-wrapper">
+                        <div class="form-group pages">
+                          <pagination-controls class="my-pagination" id="pager" (pageChange)="pageChanged($event)" maxSize="9" directionLinks="true"
+                            autoHide="true" previousLabel="Prev" nextLabel="Next" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+                            screenReaderCurrentLabel="You're on page">
+                          </pagination-controls>
+                        </div>
+                        <div class="form-group options pages">
+                          <div class="input-group input-group-sm">
+                            <select class="form-control" name="pageChangedName" [(ngModel)]="pageSize" (ngModelChange)="FetchData()">
+                              <option>1</option>
+                              <option>5</option>
+                              <option>10</option>
+                              <option>20</option>
+                              <option>50</option>
+                              <option>100</option>
+                              <option>200</option>
+                            </select>
+                            <span class="input-group-addon addon-right">Per Page</span>
+                          </div>
+                        </div>
+                      </form>
+                    </card>  
+                  </div>
+                </div>
+
+             
+            </div>
+          <div id="menu1" class="tab-pane fade">
+          
+                <div class="row">
+                    <div class="col-md-12">   
+                        <card cardTitle="User Details">    
+                        <table class="table table-bordered table-hover">
+                          <thead>
+                            <tr>                                             
+                              <th>User Name</th>
+                              <th>XID</th>
+                              <th>Email</th>
+                              <th>Status</th>
+                              <th></th>
+                                 
+                            </tr>
+                          </thead> 
+                          <tbody>
+                          
+                              <tr *ngFor="let item of userDetails| paginate: { id: 'pager1', itemsPerPage: userpageSize, currentPage: userpageNumber}; let i = index">
+                              <td>{{item.employeeName}}</td>                
+                              <td>{{item.XID}}</td>
+                              <td>{{item.email}}</td>
+                              <td><ng-template [ngIf]="item.IsApproved == 1">Approved</ng-template>
+                                <ng-template [ngIf]="item.IsApproved == 2">Disapproved</ng-template>
+                                <ng-template [ngIf]="item.IsApproved ==0">Inprogress</ng-template>
+                               </td>     
+                              <td>
+                                  <ng-template [ngIf]="item.IsApproved == 0">
+                                      <button (click)="ApproveUser(item.id)">Approve</button><button (click)="DisapproveUser(item.id)" >Disapprove</button>
+                                  </ng-template>
+                                
+                              </td>                                
+                            </tr>
+                          </tbody>          
+                        </table>  
+                        <form class="pagination-wrapper">
+                          <div class="form-group pages">
+                            <pagination-controls class="my-pagination" id="pager1" (pageChange)="userpageChanged($event)" maxSize="9" directionLinks="true"
+                              autoHide="true" previousLabel="Prev" nextLabel="Next" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+                              screenReaderCurrentLabel="You're on page">
+                            </pagination-controls>
+                          </div>
+                          <div class="form-group options pages">
+                            <div class="input-group input-group-sm">
+                              <select class="form-control" name="pageChangedName" [(ngModel)]="userpageSize" (ngModelChange)="FetchDatauser()">
+                                <option>1</option>
+                                <option>5</option>
+                                <option>10</option>
+                                <option>20</option>
+                                <option>50</option>
+                                <option>100</option>
+                                <option>200</option>
+                              </select>
+                              <span class="input-group-addon addon-right">Per Page</span>
+                            </div>
+                          </div>
+                        </form>
+                      
+                      </card>  
+                    </div>
+                 
+             
+              </div>
+ 
+          </div> 
+        
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+      
+   
+   

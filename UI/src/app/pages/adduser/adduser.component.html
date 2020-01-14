@@ -1,0 +1,90 @@
+<div class="row container col-md-12 col-sm-12 col-lg-12">
+    <span class="clstitle" [ngClass]="{'spn-mandate': !IsValidtosubmit}">{{TitleText}}</span>
+  <div class="col-md-12 col-sm-12 col-lg-12">    
+        <form>
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        <label for="txtempid">Employee Id <span class="spn-mandate">*</span></label>
+                        <input type="text" autocomplete="off" class="form-control" [ngClass]="{'input-mandate': !IsValidtosubmit}" id="txtempid" name="txtempid" [(ngModel)]="userDetail.username" >         
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="txtfirstname">First Name</label>
+                        <input type="text" autocomplete="off" class="form-control" id="txtfirstname" name="txtfirstname" [(ngModel)]="userDetail.Firstname" >         
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="txtlastname">Last Name</label>
+                        <input type="text" autocomplete="off" class="form-control" id="txtlastname" name="txtlastname" [(ngModel)]="userDetail.Lastname" >         
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="cobrole">Role <span class="spn-mandate">*</span></label>
+                        <select class="form-control" [ngClass]="{'input-mandate': !IsValidtosubmit}" id="cobrole" name="cobrole" [(ngModel)]="userDetail.role" >
+                            <option value="0">Select</option>
+                            <option value="Admin">Admin</option>                
+                            <option value="Manager">Manager</option>
+                        </select>
+                      </div>                                           
+              </div>
+                <div class="row form-group col-md-6">
+                  <button type="submit" class="btn" [ngClass]="{'btn-success': methodType==1, 'btn-warning': methodType==2}" (click)="CreateOrUpdateUser()">{{ CreateButtonText }}</button>
+                  <button class="btn btn-default" (click)="clearUser()">Reset</button>
+                </div>
+              </form>
+</div>
+<div class="row container col-md-12 col-sm-12 col-lg-12">
+    <!-- <div class="col-md-4 form-group">            
+        <input type="text" placeholder="Search" class="form-control" id="txtsearch" name="txtsearch">            
+    </div> -->
+    <!-- <project-details-table [tableData]="projectDetails"></project-details-table> -->
+    <div class="row">
+        <div class="col-md-12">
+          <card cardTitle="Details">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>                                                     
+                        <th>Employee Id</th>                  
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Role</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of UserDetails | paginate: { id: 'pager', itemsPerPage: pageSize, currentPage: pageNumber}; let i = index">
+                        <td>{{user.username}}</td>                                                           
+                        <td>{{user.Firstname}}</td>
+                        <td>{{user.Lastname}}</td>
+                        <td>{{user.role}}</td>                        
+                        <td>
+                            <i class="fa fa-edit fa-fw" tooltip="Edit" (click)="editUser(user,i)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <form class="pagination-wrapper">
+                <div class="form-group pages">
+                  <pagination-controls class="my-pagination" id="pager" (pageChange)="pageChanged($event)" maxSize="9" directionLinks="true"
+                    autoHide="true" previousLabel="Prev" nextLabel="Next" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+                    screenReaderCurrentLabel="You're on page">
+                  </pagination-controls>
+                </div>
+                <div class="form-group options pages">
+                  <div class="input-group input-group-sm">
+                    <select class="form-control" name="pageChangedName" [(ngModel)]="pageSize" (ngModelChange)="GetUserDetails()">
+                      <option>1</option>
+                      <option>5</option>
+                      <option>10</option>
+                      <option>20</option>
+                      <option>50</option>
+                      <option>100</option>
+                      <option>200</option>
+                    </select>
+                    <span class="input-group-addon addon-right">Per Page</span>
+                  </div>
+                </div>
+              </form>
+          </card>
+        </div>
+      </div>
+      
+</div>
+</div>

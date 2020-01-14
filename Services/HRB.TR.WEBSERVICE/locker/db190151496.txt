@@ -1,0 +1,64 @@
+USE [ION_MERGE_AUTO]
+GO
+
+/****** Object:  Table [dbo].[CertRootCauseDetail]    Script Date: 5/28/2019 2:41:14 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CertRootCauseDetail](
+	[RootCauseDetailId] [int] IDENTITY(1,1) NOT NULL,
+	[CertProductSectionDetailId] [int] NOT NULL,
+	[RootCauseId] [int] NOT NULL,
+	[Number] [int] NULL,
+	[Comments] [nvarchar](max) NULL,
+ CONSTRAINT [PK_CertRootCauseDetail] PRIMARY KEY CLUSTERED 
+(
+	[RootCauseDetailId] ASC
+)WITH (PAD_INDEX = ON, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+
+=======================================================================
+
+
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CertRootCause](
+	[RootCauseId] [int] IDENTITY(1,1) NOT NULL,	
+	[RootCause] [nvarchar](50) NULL
+	
+ CONSTRAINT [PK_CertRootCause] PRIMARY KEY CLUSTERED 
+(
+	[RootCauseId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+[CertRootCauseDetail]
+[RootCauseDetailId] [int] IDENTITY(1,1) NOT NULL,
+	[CertRootCauseId] [int] NULL,
+	[RootCauseId] [int] NOT NULL,
+	[Count] [int] NULL,
+	[Comments] [nvarchar](max) NULL,
+	[InsertedOn] [datetime] NULL,
+	[InsertedBy] [nvarchar](100) NULL,
+
+
+
+CREATE TABLE [dbo].[CertRootCause](
+	[CertRootCauseId] [int] IDENTITY(1,1) NOT NULL,
+	[CertProductSectionId] [int] NULL,
+	[CertProductSectionDetailId] [int] NULL,
+	[LastUpdatedBy] [nvarchar](50) NULL,
+	[LastUpdatedOn] [datetime] NULL,

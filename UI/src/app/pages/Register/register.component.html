@@ -1,0 +1,104 @@
+<!-- <div class="card card-block login-card" (keyup.enter)="Registration()">
+  <h3 class="form-label">Register</h3>
+  <span [ngClass]="{'lbl-wrong-cred': !IsEmptyOrCorrectCreds, 'lbl-correct-cred': IsEmptyOrCorrectCreds}" class="form-label">{{LoginText}}</span>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon addon-left" id="username">        
+        <i [ngClass]="{'lbl-wrong-cred': !isvaliddetails}" class="fa fa-user fa-fw"></i>
+      </span>
+      <select class="form-control with-primary-addon" [(ngModel)]="CurrentUser.id" (change)="UserComboChanged($event.target.value)">
+        <option value="0">Select EmployeeID</option>
+        <option *ngFor="let user of UserDetails" value="{{user.id}}">{{user.username}}</option>
+    </select>
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon addon-left" id="role">
+          <i class="fa fa-male fa-fw"></i>
+        </span>
+        <input class="form-control with-primary-addon" disabled [(ngModel)]="Userrole" placeholder="Role" type="text">
+    </div>
+    <div class="input-group">
+          <span class="input-group-addon addon-left" id="employeename">
+            <i class="fa fa-user-secret fa-fw"></i>
+          </span>
+          <input class="form-control with-primary-addon" disabled [(ngModel)]="Employeename" placeholder="Employee Name" type="text">
+      </div>
+    <div class="input-group">
+      <span class="input-group-addon addon-left" id="password">
+        <i [ngClass]="{'lbl-wrong-cred': !isvaliddetails}" class="fa fa-lock fa-fw"></i>
+      </span>
+      <input class="form-control with-primary-addon" [(ngModel)]="Password" (focusout)="ComparepasswordsInitial()" placeholder="Password" type="password">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon addon-left" id="confirmpassword">
+        <i [ngClass]="{'lbl-wrong-cred': !isvaliddetails}" class="fa fa-lock fa-fw"></i>
+      </span>
+      <input class="form-control with-primary-addon" [(ngModel)]="CNFPassword" (focusout)="ComparepasswordsOnConfirmation()" placeholder="Confirm Password" type="password">
+    </div>    
+    <div class="input-group">
+        <span class="input-group-addon addon-left" id="role">
+            <label class="image-upload-container btn btn-bwm">
+                <span>Select Image</span>
+                <input #imageInput
+                       type="file"
+                       accept="image/*"
+                       (change)="processFile(imageInput)">
+              </label>
+        </span>        
+          <img class="profile-image" [src]="CurrentUser.image">
+      </div>
+    <button class="btn btn-lg btn-warning" (click)="Registration()">Register</button>
+    <a href="/login" class="btn btn-link">SignIn. →</a>
+  </div>
+</div> -->
+
+<div class="card card-block login-card">  
+<h2 class="form-label">Register</h2> 
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <div class="input-group">
+          <span class="input-group-addon addon-left" id="username">
+              <i class="fa fa-user fa-fw"></i>
+            </span>
+            <input class="form-control with-primary-addon" formControlName="firstName" placeholder="UserName" type="text" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        </div>
+    </div>
+ 
+    <div class="input-group">
+        <span class="input-group-addon addon-left" id="xid">
+            <i class="fa fa-male fa-fw"></i>
+          </span>
+        <input type="text" formControlName="XID" class="form-control with-primary-addon" placeholder="XID" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.XID.errors" class="invalid-feedback">
+            <div *ngIf="f.XID.errors.required">XID is required</div>
+        </div>
+    </div>
+   
+    <div class="input-group">
+        <span class="input-group-addon addon-left" id="email">
+            <i class="fa fa-address-card-o fa-fw"></i>
+          </span>
+        <input type="text" formControlName="email" class="form-control with-primary-addon" placeholder="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Username is required</div>
+        </div>
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon addon-left" id="password">
+            <i class="fa fa-lock fa-fw"></i>
+          </span>
+        <input type="password" formControlName="password" class="form-control with-primary-addon" placeholder="Password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+    </div>
+    
+        <button [disabled]="loading" class="btn btn-lg btn-warning">Register</button>   
+        <a [routerLink]="['/login']" class="btn btn-link">SignIn</a> 
+    </div>
+</form>
+</div>
+

@@ -1,0 +1,37 @@
+﻿
+    <Body>
+      <![CDATA[<html>
+              <head>
+              <style>
+              body {
+	                font-family: Verdana, Tahoma, Arial;
+    	            font-size: 10pt;
+                  margin-left: 20px;
+	                margin-right: 20px;	
+              }
+              body div {
+	                font-size: 10pt;
+              }
+              div h4 {
+	                font-size: 15pt; 
+              }
+              div a {
+	                text-decoration: none;
+              }
+              .footnote {
+	                margin-top: 20px;
+	                font-size: 8pt;
+              }
+              </style>
+              </head>
+              <body lang="en-US">
+              <div><h4>{{report-title}}<h4></div>
+              <div>Thank you for registration</div>
+          
+              <div class="footnote">
+              Please note: This is an automated email. If you received this email by mistake, please contact Tool Management team to have your name removed.
+              </div>
+              </body>
+              </html>]]>
+    </Body>
+

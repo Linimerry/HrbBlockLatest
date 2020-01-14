@@ -1,0 +1,33 @@
+  public int FormName { get; set; }     
+        public Nullable<System.DateTime> QAFinalCompletedOn { get; set; }
+        public Nullable<System.DateTime> ApprovedOn { get; set; }
+        public Nullable<System.DateTime> FullyApprovedOn { get; set; }
+        public Nullable<System.DateTime> NinetyFivePercentCompletedOn { get; set; }
+        public bool FullyApproved { get; set; }
+      
+
+            //    var dform = (from vtf in _context.GetOFL_Report(taxYear, system, taxGroup)
+            //                 select new GetOFL_Report_Result
+            //                 {
+            //                     FormName = vtf.FormName,
+            //                     FullyApprovedOn = vtf.FullyApprovedOn,
+            //                     NinetyFivePercentCompletedOn = vtf.NinetyFivePercentCompletedOn,
+            //                     ApprovedOn = vtf.ApprovedOn,
+            //                     FullyApproved = vtf.FullyApproved,
+            //                     QAFinalCompletedOn = vtf.QAFinalCompletedOn
+            //                 }).ToList();
+
+            //  return(from form in _context.View_TaxForm.Where(h => h.Year == taxYear && (h.TaxSystemId == system || system == 0) && (h.TaxGroupId == taxGroup || taxGroup == 0) && (h.FormType == "Output") && !h.Deleted).ToList()
+            //                join formExtended in _context.Form on form.FormId equals formExtended.FormId
+            //            join enumTaxForm in _context.Enum_TaxForm on form.FormId equals enumTaxForm.TaxFormId                
+            //            join fso in dform on form.SmallName equals fso.FormName 
+            //            //into dorforms
+            //           // from dv in dorforms.DefaultIfEmpty()
+            //            where form.Year == taxYear
+            //                      && (form.TaxSystemId == system || system == 0)
+            //                      && (form.TaxGroupId == taxGroup || taxGroup == 0)
+            //                      && form.FormType == "Output"
+            //                      && !form.Deleted
+            //                      && fso.FormName != null
+            //            select new  classname { ViewTaxForm = form, Form = formExtended, EnumTF = enumTaxForm, Report=fso }).OrderBy(f => f.ViewTaxForm.SortOrder).ThenBy(f => f.Form.SmallName).ToList().Select(f => f.Form.ConvertToDTOWithTaxForm(f.ViewTaxForm, f.EnumTF,f.Report));            
+            //

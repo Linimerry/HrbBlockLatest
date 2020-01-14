@@ -1,0 +1,61 @@
+<div class="pages-top">
+  <div class="avatar-wrap">
+   
+    <div class="user-info-wrap">
+      <!-- <span class="user-name" title="{{CurrentUser.name}}">{{CurrentUser.name}}</span>
+      <span class="user-post" title="{{CurrentUser.role}}">{{CurrentUser.role}}</span> --> 
+
+       <span class="user-name" title="Name">HRB TM</span>
+     
+    </div>
+  </div> 
+
+  <div class="collapse-menu" (click)="_sidebarToggle()">
+    <!-- <i class="fa fa-navicon fa-fw" [ngClass]="{'toggle-on':sidebarToggle,'toggle-off':!sidebarToggle}"></i> -->
+    <i class="fa fa-compress" *ngIf="sidebarToggle"></i>
+    <i class="fa fa-expand" *ngIf="!sidebarToggle"></i>
+  </div>
+
+
+  <!-- <div class="search-group">
+    <input type="text" class="search-input" placeholder="Search project · · ·">
+    <button class="search-btn">
+      <i class="fa fa-search fa-fw"></i>
+    </button>
+  </div> -->
+
+  <div class="msg-tips-wrap" style="z-index: 2;">
+    <div class="msg-entrance email">
+        <!-- <span class="fa fa-sign-out fa-fw" tooltip="Signout" (click)="Logout()"><span>Signout</span></span> -->
+
+   
+      
+          <div>
+
+            
+                      <button type="button"  class="dropdown" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <img src="assets/images/1.png" alt="user" height="40" width="40"  > 
+                 
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu" >
+                <!-- <li><a href="#"><span class="fa fa-sign-out fa-fw" tooltip="Profile" (click)="Logout()"><span>Profile</span></span></a></li> -->
+                <li class="divider"></li>
+                <li><a href="#"><span class="fa fa- fa-fw" tooltip="Instruction" (click)="Logout()"><span>Instruction</span></span></a></li>
+                <li class="divider"></li>
+                <li><a href="#"><span class="fa fa-sign-out fa-fw" tooltip="Signout" (click)="Logout()"><span>Signout</span></span></a></li>
+               
+              </ul>
+            
+        </div>
+       
+        <!-- <span class="badge" *ngIf="tip.email"></span> -->
+    </div>
+    <div class="msg-entrance ring">
+
+     Lini Francis
+     
+    </div>
+    
+  </div>
+
+</div>
